@@ -86,10 +86,9 @@ public class RentalServiceImpl implements RentalService {
   }
 
   boolean checkForRental(UUID bookId) {
-    if (rentalRepository.findById(bookId).isEmpty()) {
+    if (bookRepository.findById(bookId).isEmpty()) {
       throw new IllegalArgumentException("Book does not exist");
     }
-    var renterName = rentalRepository.findById(bookId).get().getRenterName();
-    return renterName == null;
+    return rentalRepository.findById(bookId).isEmpty();
   }
 }
