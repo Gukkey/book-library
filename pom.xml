@@ -25,25 +25,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>org.flywaydb</groupId>-->
+		<!--			<artifactId>flyway-core</artifactId>-->
+		<!--		</dependency>-->
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-docker-compose</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-docker-compose</artifactId>-->
+		<!--			<scope>runtime</scope>-->
+		<!--			<optional>true</optional>-->
+		<!--		</dependency>-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -53,11 +54,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -76,6 +72,26 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<!--			<plugin>-->
+			<!--				<groupId>org.flywaydb</groupId>-->
+			<!--				<artifactId>flyway-maven-plugin</artifactId>-->
+			<!--				<version>10.0.0</version>-->
+			<!--				<configuration>-->
+			<!--					<url>jdbc:postgresql://localhost:5432/library</url>-->
+			<!--					<user>library</user>-->
+			<!--					<password>library</password>-->
+			<!--					<cleanDisabled>false</cleanDisabled>-->
+			<!--					<baselineOnMigrate>true</baselineOnMigrate>-->
+			<!--				</configuration>-->
+			<!--				<dependencies>-->
+			<!--					<dependency>-->
+			<!--						<groupId>org.flywaydb</groupId>-->
+			<!--						<artifactId>flyway-database-postgresql</artifactId>-->
+			<!--						<version>10.10.0</version>-->
+			<!--						<scope>runtime</scope>-->
+			<!--					</dependency>-->
+			<!--				</dependencies>-->
+			<!--			</plugin>-->
 		</plugins>
 	</build>
 
