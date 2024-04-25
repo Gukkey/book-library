@@ -1,0 +1,18 @@
+meta {
+  name: Create Retrieval
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/rental/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "bookId": "fb3d5301-49a5-4e8d-b20a-728b3a17880c",
+    "renterName": "Guhan"
+  }
+}

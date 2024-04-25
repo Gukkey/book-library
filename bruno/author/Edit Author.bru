@@ -1,0 +1,18 @@
+meta {
+  name: Edit Author
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://localhost:8080/api/author/203f0d0e-2338-4252-b7e3-8112b8ac66e8
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Yuval Noah Harari",
+    "biography": "Author of Sapiens: A Brief History of Humankind and Unstoppable Us, Volume 2: Why the World Isn't Fair"
+  }
+}
