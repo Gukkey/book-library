@@ -20,6 +20,7 @@ public class AuthorServiceImpl implements AuthorService {
   private final AuthorRepository authorRepository;
 
   private static final String BAD_REQUEST = "Bad request";
+  private static final String AUTHOR_NOT_FOUND = "Author not found";
 
   @Autowired
   public AuthorServiceImpl(AuthorMapper authorMapper, AuthorRepository authorRepository) {
@@ -27,7 +28,13 @@ public class AuthorServiceImpl implements AuthorService {
     this.authorMapper = authorMapper;
   }
 
-  @Override
+  /**
+   * Creates an author based on the provided author DTO.
+   *
+   * @param  authorDTO the author DTO containing the author details
+   * @return          the response entity containing the author response
+   */
+
   public ResponseEntity<AuthorResponse> createAuthor(AuthorDTO authorDTO) {
     AuthorResponse response;
     try {
@@ -51,10 +58,21 @@ public class AuthorServiceImpl implements AuthorService {
     return ResponseEntity.status(response.getStatus()).body(response);
   }
 
+  /**
+   * Deletes an author by their ID.
+   *
+   * @param  id  the ID of the author to delete
+   * @return     a ResponseEntity containing the result of the deletion operation
+   */
+
   @Override
   public ResponseEntity<AuthorResponse> deleteAuthor(UUID id) {
     AuthorResponse response;
     try {
+      Optional<Author> optional = authorRepository.findById(id);
+      if (optional.isEmpty()) {
+        throw new IllegalArgumentException(AUTHOR_NOT_FOUND);
+      }
       authorRepository.deleteById(id);
       response =
           AuthorResponse.builder()
@@ -71,13 +89,21 @@ public class AuthorServiceImpl implements AuthorService {
     return ResponseEntity.status(response.getStatus()).body(response);
   }
 
+  /**
+   * Updates an author with the given ID using the provided AuthorDTO.
+   *
+   * @param  id       the ID of the author to be updated
+   * @param  authorDTO the AuthorDTO containing the updated author information
+   * @return          a ResponseEntity containing the updated AuthorResponse
+   */
+
   @Override
   public ResponseEntity<AuthorResponse> updateAuthor(UUID id, AuthorDTO authorDTO) {
     AuthorResponse response;
     try {
       Optional<Author> optional = authorRepository.findById(id);
       if (optional.isEmpty()) {
-        throw new IllegalArgumentException("Author not found");
+        throw new IllegalArgumentException(AUTHOR_NOT_FOUND);
       }
       if (!optional.get().getName().equals(authorDTO.getName())) {
         optional.get().setName(authorDTO.getName());
@@ -104,13 +130,22 @@ public class AuthorServiceImpl implements AuthorService {
     return ResponseEntity.status(response.getStatus()).body(response);
   }
 
+  /**
+   * Retrieves an author by their unique identifier.
+   *
+   * @param  id  the unique identifier of the author
+   * @return     a ResponseEntity containing the AuthorResponse with the author details, or a
+   *             ResponseEntity with a BAD_REQUEST status and a "Bad Request" message if the author is not
+   *             found or an error occurs
+   */
+
   @Override
   public ResponseEntity<AuthorResponse> getAuthor(UUID id) {
     AuthorResponse response;
     try {
       Optional<Author> optional = authorRepository.findById(id);
       if (optional.isEmpty()) {
-        throw new IllegalArgumentException("Author not found");
+        throw new IllegalArgumentException(AUTHOR_NOT_FOUND);
       }
       response =
           AuthorResponse.builder()
