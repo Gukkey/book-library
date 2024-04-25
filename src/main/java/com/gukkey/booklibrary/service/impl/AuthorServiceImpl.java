@@ -31,10 +31,9 @@ public class AuthorServiceImpl implements AuthorService {
   /**
    * Creates an author based on the provided author DTO.
    *
-   * @param  authorDTO the author DTO containing the author details
-   * @return          the response entity containing the author response
+   * @param authorDTO the author DTO containing the author details
+   * @return the response entity containing the author response
    */
-
   public ResponseEntity<AuthorResponse> createAuthor(AuthorDTO authorDTO) {
     AuthorResponse response;
     try {
@@ -61,10 +60,9 @@ public class AuthorServiceImpl implements AuthorService {
   /**
    * Deletes an author by their ID.
    *
-   * @param  id  the ID of the author to delete
-   * @return     a ResponseEntity containing the result of the deletion operation
+   * @param id the ID of the author to delete
+   * @return a ResponseEntity containing the result of the deletion operation
    */
-
   @Override
   public ResponseEntity<AuthorResponse> deleteAuthor(UUID id) {
     AuthorResponse response;
@@ -92,11 +90,10 @@ public class AuthorServiceImpl implements AuthorService {
   /**
    * Updates an author with the given ID using the provided AuthorDTO.
    *
-   * @param  id       the ID of the author to be updated
-   * @param  authorDTO the AuthorDTO containing the updated author information
-   * @return          a ResponseEntity containing the updated AuthorResponse
+   * @param id the ID of the author to be updated
+   * @param authorDTO the AuthorDTO containing the updated author information
+   * @return a ResponseEntity containing the updated AuthorResponse
    */
-
   @Override
   public ResponseEntity<AuthorResponse> updateAuthor(UUID id, AuthorDTO authorDTO) {
     AuthorResponse response;
@@ -133,12 +130,11 @@ public class AuthorServiceImpl implements AuthorService {
   /**
    * Retrieves an author by their unique identifier.
    *
-   * @param  id  the unique identifier of the author
-   * @return     a ResponseEntity containing the AuthorResponse with the author details, or a
-   *             ResponseEntity with a BAD_REQUEST status and a "Bad Request" message if the author is not
-   *             found or an error occurs
+   * @param id the unique identifier of the author
+   * @return a ResponseEntity containing the AuthorResponse with the author details, or a
+   *     ResponseEntity with a BAD_REQUEST status and a "Bad Request" message if the author is not
+   *     found or an error occurs
    */
-
   @Override
   public ResponseEntity<AuthorResponse> getAuthor(UUID id) {
     AuthorResponse response;
