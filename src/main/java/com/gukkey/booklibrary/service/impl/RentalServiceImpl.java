@@ -140,10 +140,10 @@ public class RentalServiceImpl implements RentalService {
   /**
    * Returns a rental by its book ID.
    *
-   * @param  bookId  the ID of the book to be returned
-   * @return         a ResponseEntity containing the RentalResponse with the rental details and the corresponding status code
+   * @param bookId the ID of the book to be returned
+   * @return a ResponseEntity containing the RentalResponse with the rental details and the
+   *     corresponding status code
    */
-
   @Override
   public ResponseEntity<RentalResponse> returnRental(UUID bookId) {
     RentalResponse response;
