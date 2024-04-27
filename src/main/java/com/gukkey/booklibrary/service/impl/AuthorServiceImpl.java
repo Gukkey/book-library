@@ -69,7 +69,12 @@ public class AuthorServiceImpl implements AuthorService {
     try {
       Optional<Author> optional = authorRepository.findById(id);
       if (optional.isEmpty()) {
-        throw new IllegalArgumentException(AUTHOR_NOT_FOUND);
+        response =
+            AuthorResponse.builder()
+                .status(HttpStatus.BAD_REQUEST.value())
+                .response(AUTHOR_NOT_FOUND)
+                .build();
+        return ResponseEntity.status(response.getStatus()).body(response);
       }
       authorRepository.deleteById(id);
       response =
